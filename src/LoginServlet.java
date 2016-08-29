@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Lawik Ayoub on 29-Aug-16.
+ * Created by Lars Meulenbroek on 29-Aug-16.
  */
-@WebServlet("/number")
-public class NumberServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -21,6 +21,6 @@ public class NumberServlet extends HttpServlet {
         int a = 2*2;
 
         out.println("<!doctype html\"><html><head><title>Test</title></head>"+
-        "</br>The number is"+a);
+                "</br>The number is"+a);
     }
 }
