@@ -9,13 +9,18 @@ import java.io.PrintWriter;
 /**
  * Created by Lawik Ayoub on 29-Aug-16.
  */
-@WebServlet("/register")
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "NumberServlet")
+public class NumberServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
 
+        int a = 2*2;
+
+        out.println("<!doctype html\"><html><head><title>Test</title></head>"+
+        "</br>The number is"+a);
     }
 }
