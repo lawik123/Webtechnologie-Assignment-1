@@ -6,11 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Created by Lars Meulenbroek on 29-Aug-16.
- */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/wronglogin")
+public class WrongLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -25,18 +22,11 @@ public class LoginServlet extends HttpServlet {
                 "</head>\n" +
                 "<body>\n" +
                 "<h1> Room Rental</h1>\n" +
-                "<h4> login </h4>\n" +
+                "<h4> Register </h4>\n" +
                 "\n" +
-                "<form action=\"login\">\n" +
-                "    Username: <input type=\"text\" name=\"UserName\" value=\"\"><br>\n" +
-                "    <br>\n" +
-                "    Password: <input type=\"text\" name=\"PassWord\" value=\"\"><br>\n" +
-                "    <br>\n" +
-                "    <input type=\"submit\" value=\"Log In\">\n" +
-                "</form>\n" +
+                "<p> Wrong username and password combination" +
                 "<br>\n" +
-                "<a href=\"/register\">Not yet registered? </a>\n" +
-                "\n" +
+                "<a href=\"/wronglogin\">Login </a>" +
                 "</body>\n" +
                 "</html>");
     }
