@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add room</title>
+</head>
+<body>
+<h1>Kamer toevoegen</h1>
+<form action="">
+    Plaats: <select name="Plaats">
+        <option value="Amsterdam">Amsterdam</option>
+        <option value="Apeldoorn">Apeldoorn</option>
+        <option value="Den Haag">Den Haag</option>
+        <option value="Deventer">Deventer</option>
+    </select>
+    Postcode:
+    <input type="text" name="Postcode" required>
+    <br>
+    Straat:
+    <input type="text" name="Straat" required>
+    Huisnummer:
+    <input type="number" min="1" required>
+    <br>
+    prijs: <br>
+    <input type="number" name="MaximalePrijs" value="" min="1" required><br>
+    Aantal vierkante meters: <br>
+    <input type="number" name="VierkanteMeters" value="" min="1" max="100" required><br>
+    <br>
+    <input type="submit" value="Add room"> <input type="reset">
+
+
+</form>
+
+</body>
+</html>
