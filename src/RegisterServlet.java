@@ -1,3 +1,6 @@
+import Model.*;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,33 +15,40 @@ import java.io.PrintWriter;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        String username;
+        String password;
+        String type;
+
+        username = request.getParameter("UserName");
+        password = request.getParameter("PassWord");
+        type = request.getParameter("UserType");
+        if(Model.getInstance().getUser(username)!=null){
+            out.println("<!DOCTYPE html>\n" +
+                    "<html lang =\"en\">\n" +
+                    "<head\n" +
+                    "<meta charset = \"UTF-8\">\n" +
+                    "<title> Registration failed</title>\n" +
+                    "<body>\n" +
+                    "<h2>username already exists</h2>\n" +
+//                    "<br>\n" +
+                    "<a href=registreer.html>Try again</a>\n"+
+                    "</body>");
+
+
+        }
+        else if(type.equals("renter")){
+            Model.getInstance().addUser(new Renter(username,password));
+            response.sendRedirect("/login.html");
+        }
+        else if(type.equals("owner")){
+            Model.getInstance().addUser(new Owner(username,password));
+            response.sendRedirect("/login.html");
+        }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "<head>\n" +
-                "    <meta charset=\"UTF-8\">\n" +
-                "    <title>Room Rental</title>\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "<h1> Room Rental</h1>\n" +
-                "<h4> Register </h4>\n" +
-                "\n" +
-                "<form action=\"login\">\n" +
-                "    Username: <input type=\"text\" name=\"UserName\" value=\"\"><br>\n" +
-                "    <br>\n" +
-                "    Password: <input type=\"text\" name=\"PassWord\" value=\"\"><br>\n" +
-                "    <br>\n" +
-                "    <input type=\"radio\" name=\"UserType\" value=\"renter\"> Renter" +
-                "    <input type=\"radio\" name=\"UserType\" value=\"owner\"> owner<br>" +
-                "    <br>" +
-                "    <input type=\"submit\" value=\"Register\">\n" +
-                "</form>\n" +
-                "<br>\n" +
-                "</body>\n" +
-                "</html>");
+
     }
 }
