@@ -1,6 +1,3 @@
-import Model.*;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +7,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
+import Model.*;
 
 /**
- * Created by Lawik Ayoub on 31-Aug-16.
+ * Created by Lawik Ayoub on 03-Sep-16.
  */
-@WebServlet("/searchroom")
-public class SearchRoomServlet extends HttpServlet {
+@WebServlet("/showrooms")
+public class ShowRoomsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -25,29 +22,26 @@ public class SearchRoomServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         User user = Model.getInstance().getUser(session.getAttribute("user").toString());
-        ArrayList<Room> availableRooms = new ArrayList<Room>();
-        for (Room room : Model.getInstance().getRooms()) {
-            if (room.getCity().equals(request.getParameter("Plaats"))
-                    && room.getSize() == Integer.parseInt(request.getParameter("VierkanteMeters"))
-                    && room.getPrice() <= Double.parseDouble(request.getParameter("MaximalePrijs"))
-                    && room.getRenter() == null) {
-                availableRooms.add(room);
-            }
+        ArrayList<Room> rooms = new ArrayList<Room>();
 
+        for(Room room: Model.getInstance().getRooms()){
+            if(room.getOwner().getUsername().equals(user.getUsername())){
+                rooms.add(room);
+            }
         }
+
         out.println("<!DOCTYPE html>\n" +
                 "<html lang =\"en\">\n" +
                 "<head\n" +
                 "<meta charset = \"UTF-8\">\n" +
-                "<title> Zoekresultaten</title>\n" +
+                "<title> Mijn kamers</title>\n" +
                 "<body>\n" +
                 "<h2> Beschikbare kamers: </h1>\n" +
                 "</br>\n");
-        for (int i = 0; i < availableRooms.size(); i++) {
-            out.println(i + 1 + ". " + availableRooms.get(i).toString() + "<br>");
+        for (int i = 0; i < rooms.size(); i++) {
+            out.println(i + 1 + ". " + rooms.get(i).toString() + "<br>");
         }
         out.println("</body>");
-
 
     }
 }

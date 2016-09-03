@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -15,17 +16,18 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
         User user = Model.getInstance().getUser(request.getParameter("UserName"));
-        if(user!=null&&user.getPassword().equals(request.getParameter("PassWord"))){
-            if(user instanceof Renter){
+        if (user != null && user.getPassword().equals(request.getParameter("PassWord"))) {
+            session.setAttribute("user", user.getUsername());
+            if (user instanceof Renter) {
                 response.sendRedirect("/huurder.html");
-            }
-            else if(user instanceof Owner){
+            } else if (user instanceof Owner) {
+                response.sendRedirect("showrooms");
 
             }
 
-        }
-        else{
+        } else {
             response.sendRedirect("/fouteinlog.html");
         }
 

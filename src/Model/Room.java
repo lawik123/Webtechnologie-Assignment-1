@@ -14,7 +14,7 @@ public class Room {
     private Renter renter;
 
 
-    public Room(String city, String postcode, String streetName, int number, double price, int size,Owner owner) {
+    public Room(String city, String postcode, String streetName, int number, double price, int size, Owner owner) {
         this.city = city;
         this.postcode = postcode;
         this.streetName = streetName;
@@ -73,6 +73,9 @@ public class Room {
 
     @Override
     public String toString() {
-        return "stad: "+city+" postcode: "+postcode+" Adres: "+streetName+" "+number+" Grootte: "+size+"m2 "+"Prijs: "+price+" euro Eigenaar: "+owner.getUsername();
+        if(renter==null) {
+            return "stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername();
+        }
+        return "Stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername() + " Huurder: " + renter.getUsername();
     }
 }
