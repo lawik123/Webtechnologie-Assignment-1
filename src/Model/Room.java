@@ -73,8 +73,8 @@ public class Room {
 
     @Override
     public String toString() {
-        if(renter==null) {
-            return "stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername();
+        if (renter == null) {
+            return "Stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername();
         }
         return "Stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername() + " Huurder: " + renter.getUsername();
     }

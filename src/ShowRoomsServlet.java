@@ -41,7 +41,7 @@ public class ShowRoomsServlet extends HttpServlet {
                 "<body>\n" +
                 "<h2> Mijn kamers: </h1>\n" +
                 "</br>\n" +
-                "<form action=\"addroom\" method=\"post\">\n" +
+                "<form action=\"addroom.html\" method=\"post\">\n" +
                 "    <label>\n" +
                 "    <input type=\"submit\" value=\"AddRoom\">\n" +
                 "    </label>\n" +
