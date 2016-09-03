@@ -7,23 +7,22 @@
 <body>
 <h1>Kamer zoeken</h1>
 <form action="searchroom" method="get">
+    <label>
     Aantal vierkante meters: <br>
     <input type="number" name="VierkanteMeters" value="" min="1" max="100" required><br>
     Maximale prijs: <br>
     <input type="number" name="MaximalePrijs" value="" min="1" required><br>
     Plaats:<br>
     <select name="Plaats">
-        <option value="Amsterdam">Amsterdam</option>
-        <option value="Apeldoorn">Apeldoorn</option>
-        <option value="Den Haag">Den Haag</option>
-        <option value="Deventer">Deventer</option>
+        <option value="Amsterdam"> Amsterdam </option>
+        <option value="Apeldoorn"> Apeldoorn </option>
+        <option value="Den Haag"> Den Haag </option>
+        <option value="Deventer"> Deventer </option>
     </select>
     <br>
     <br>
     <input type="submit" value="search"> <input type="reset">
-
+    </label>
 </form>
-
-
 </body>
 </html>
