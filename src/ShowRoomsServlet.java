@@ -36,7 +36,7 @@ public class ShowRoomsServlet extends HttpServlet {
                 "<meta charset = \"UTF-8\">\n" +
                 "<title> Mijn kamers</title>\n" +
                 "<body>\n" +
-                "<h2> Beschikbare kamers: </h1>\n" +
+                "<h2> Mijn kamers: </h1>\n" +
                 "</br>\n");
         for (int i = 0; i < rooms.size(); i++) {
             out.println(i + 1 + ". " + rooms.get(i).toString() + "<br>");
