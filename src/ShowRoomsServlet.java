@@ -1,3 +1,7 @@
+import Model.Model;
+import Model.Room;
+import Model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import Model.*;
 
 /**
  * Created by Lawik Ayoub on 03-Sep-16.
@@ -37,11 +40,17 @@ public class ShowRoomsServlet extends HttpServlet {
                 "<title> Mijn kamers</title>\n" +
                 "<body>\n" +
                 "<h2> Mijn kamers: </h1>\n" +
-                "</br>\n");
+                "</br>\n" +
+                "<form action=\"addroom\" method=\"post\">\n" +
+                "    <label>\n" +
+                "    <input type=\"submit\" value=\"AddRoom\">\n" +
+                "    </label>\n" +
+                "</form>");
         for (int i = 0; i < rooms.size(); i++) {
             out.println(i + 1 + ". " + rooms.get(i).toString() + "<br>");
         }
         out.println("</body>");
+
 
     }
 }

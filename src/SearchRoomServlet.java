@@ -47,7 +47,5 @@ public class SearchRoomServlet extends HttpServlet {
             out.println(i + 1 + ". " + availableRooms.get(i).toString() + "<br>");
         }
         out.println("</body>");
-
-
     }
 }
