@@ -25,9 +25,17 @@ public class RegisterServlet extends HttpServlet {
         ServletContext context = getServletContext();
         if (context.getAttribute("user_list") == null) {
             context.setAttribute("user_list", new ArrayList<User>());
+            ArrayList<User> list = (ArrayList<User>) getServletContext().getAttribute("user_list");
+            list.add(new Renter("renter","renter"));
+            list.add(new Owner("owner","owner"));
         }
         if (context.getAttribute("room_list") == null) {
             context.setAttribute("room_list", new ArrayList<Room>());
+            ArrayList<Room> rooms = (ArrayList<Room>) getServletContext().getAttribute("room_list");
+            ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("user_list");
+            rooms.add(new Room("Deventer","7421AD","Grove Denlaan",34,100.00,100,(Owner)users.get(1)));
+            rooms.add(new Room("Deventer","3333BM","Aap",22,50.53,100,(Owner)users.get(1)));
+            rooms.add(new Room("Deventer","4444DS","Test",30,25,100,(Owner)users.get(1),(Renter)users.get(0)));
         }
     }
 

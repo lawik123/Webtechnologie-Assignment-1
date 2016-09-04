@@ -1,5 +1,5 @@
-import Model.Room;
-import Model.User;
+import Model.*;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -22,9 +23,11 @@ public class ShowRoomsServlet extends HttpServlet {
         ServletContext context = getServletContext();
         if (context.getAttribute("user_list") == null) {
             context.setAttribute("user_list", new ArrayList<User>());
+
         }
         if (context.getAttribute("room_list") == null) {
             context.setAttribute("room_list", new ArrayList<Room>());
+
         }
     }
 
@@ -34,16 +37,23 @@ public class ShowRoomsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
 
         ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("user_list");
         ArrayList<Room> rooms = (ArrayList<Room>) getServletContext().getAttribute("room_list");
+        ArrayList<Room> myRooms = new ArrayList<>();
+        User currentUser =null;
+        for (User user: users){
+            if(user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())){
+                currentUser = user;
+            }
+        }
 
         for(Room room: rooms){
-            for (User user: users) {
-                if (room.getOwner().getUsername().equals(user.getUsername())) {
-                    rooms.add(room);
+                if (room.getOwner().getUsername().equals(currentUser.getUsername())) {
+                    myRooms.add(room);
                 }
-            }
+
         }
 
         out.println("<!DOCTYPE html>\n" +
