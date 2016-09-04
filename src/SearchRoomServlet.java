@@ -1,12 +1,12 @@
-import Model.*;
+import Model.Room;
+import Model.User;
 
-
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,16 +17,29 @@ import java.util.ArrayList;
  */
 @WebServlet("/searchroom")
 public class SearchRoomServlet extends HttpServlet {
+
+    @Override
+    public void init() throws ServletException {
+        ServletContext context = getServletContext();
+        if (context.getAttribute("user_list") == null) {
+            context.setAttribute("user_list", new ArrayList<User>());
+        }
+        if (context.getAttribute("room_list") == null) {
+            context.setAttribute("room_list", new ArrayList<Room>());
+        }
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession();
-        User user = Model.getInstance().getUser(session.getAttribute("user").toString());
+
+        ArrayList<Room> rooms = (ArrayList<Room>) getServletContext().getAttribute("room_list");
+
         ArrayList<Room> availableRooms = new ArrayList<Room>();
-        for (Room room : Model.getInstance().getRooms()) {
+        for (Room room : rooms) {
             if (room.getCity().equals(request.getParameter("Plaats"))
                     && room.getSize() == Integer.parseInt(request.getParameter("VierkanteMeters"))
                     && room.getPrice() <= Double.parseDouble(request.getParameter("MaximalePrijs"))
