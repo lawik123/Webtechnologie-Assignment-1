@@ -1,7 +1,5 @@
 import Model.Room;
-import Model.User;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,16 +16,7 @@ import java.util.ArrayList;
 @WebServlet("/searchroom")
 public class SearchRoomServlet extends HttpServlet {
 
-    @Override
-    public void init() throws ServletException {
-        ServletContext context = getServletContext();
-        if (context.getAttribute("user_list") == null) {
-            context.setAttribute("user_list", new ArrayList<User>());
-        }
-        if (context.getAttribute("room_list") == null) {
-            context.setAttribute("room_list", new ArrayList<Room>());
-        }
-    }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -1,7 +1,6 @@
-import Model.*;
+import Model.Room;
+import Model.User;
 
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,18 +17,6 @@ import java.util.ArrayList;
 @WebServlet("/showrooms")
 public class ShowRoomsServlet extends HttpServlet {
 
-    @Override
-    public void init() throws ServletException {
-        ServletContext context = getServletContext();
-        if (context.getAttribute("user_list") == null) {
-            context.setAttribute("user_list", new ArrayList<User>());
-
-        }
-        if (context.getAttribute("room_list") == null) {
-            context.setAttribute("room_list", new ArrayList<Room>());
-
-        }
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -63,15 +50,17 @@ public class ShowRoomsServlet extends HttpServlet {
                 "<title> Mijn kamers</title>\n" +
                 "<body>\n" +
                 "<h2> Mijn kamers: </h1>\n" +
-                "</br>\n" +
+                "</br>\n");
+        for (int i = 0; i < myRooms.size(); i++) {
+            out.println(i + 1 + ". " + myRooms.get(i).toString() + "<br>");
+        }
+        out.println("<br>" +
                 "<form action=\"addroom.html\" method=\"post\">\n" +
                 "    <label>\n" +
                 "    <input type=\"submit\" value=\"AddRoom\">\n" +
                 "    </label>\n" +
-                "</form>");
-        for (int i = 0; i < myRooms.size(); i++) {
-            out.println(i + 1 + ". " + myRooms.get(i).toString() + "<br>");
-        }
-        out.println("</body>");
+                "</form>\n" +
+                "<a href=\"/login.html\">log uit </a>\n" +
+                "</body>");
     }
 }
