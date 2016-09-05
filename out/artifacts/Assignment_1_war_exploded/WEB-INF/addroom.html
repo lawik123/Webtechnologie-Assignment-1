@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Kamer toevoegen</h1>
-<form action="/showrooms">
+<form action="/addroom" method="post">
     <label>
         Plaats: <select name="Plaats">
         <option value="Amsterdam">Amsterdam</option>
@@ -20,7 +20,7 @@
         Straat:
         <input type="text" name="Straat" required>
         Huisnummer:
-        <input type="number" min="1" required>
+        <input type="number" name="Huisnummer" min="1" required>
         <br>
         prijs: <br>
         <input type="number" name="MaximalePrijs" value="" min="1" required><br>

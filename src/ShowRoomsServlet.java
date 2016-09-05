@@ -17,7 +17,6 @@ import java.util.ArrayList;
 @WebServlet("/showrooms")
 public class ShowRoomsServlet extends HttpServlet {
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
