@@ -68,7 +68,9 @@ public class ShowRoomsServlet extends HttpServlet {
                 "</form>" +
                 "<br>\n" +
                 "<br>\n" +
-                "<a href=\"/login.html\">log uit </a>\n" +
+                "<form action=\"logout\" method=\"get\">\n" +
+                "<input type=\"submit\" value=\"Log out\">\n" +
+                "</form>\n" +
                 "</body>");
     }
 }
