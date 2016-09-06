@@ -54,7 +54,7 @@ public class ShowRoomsServlet extends HttpServlet {
             out.println(i + 1 + ". " + myRooms.get(i).toString() + "<br>");
         }
         out.println("<br>" +
-                "<form action=\"addroom.html\" method=\"post\">\n" +
+                "<form action=\"/addroom.html\" method=\"post\">\n" +
                 "    <label>\n" +
                 "    <input type=\"submit\" value=\"AddRoom\">\n" +
                 "    </label>\n" +
