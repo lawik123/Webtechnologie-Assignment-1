@@ -59,6 +59,15 @@ public class ShowRoomsServlet extends HttpServlet {
                 "    <input type=\"submit\" value=\"AddRoom\">\n" +
                 "    </label>\n" +
                 "</form>\n" +
+                "<br>\n" +
+                "<form action=\"delete\" method=\"post\">\n" +
+                "<label>\n" +
+                "Voer kamer nummer in: <input type=\"number\" name=\"KamerGetal\" value=\"\" min=\"1\">" +
+                "<input type=\"submit\" value=\"Delete\">\n" +
+                "</label>" +
+                "</form>" +
+                "<br>\n" +
+                "<br>\n" +
                 "<a href=\"/login.html\">log uit </a>\n" +
                 "</body>");
     }
