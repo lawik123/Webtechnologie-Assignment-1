@@ -7,11 +7,17 @@ public class User {
     private String username;
     private String password;
 
+    /**
+     * Constructor for the User Class
+     * @param username The username
+     * @param password The password
+     */
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    //getters
     public String getUsername() {
         return username;
     }

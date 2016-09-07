@@ -14,6 +14,17 @@ public class Room {
     private Renter renter;
 
 
+    /**
+     * Constructor for the Room Class without a renter
+     *
+     * @param city       The city
+     * @param postcode   The postal code
+     * @param streetName The street name
+     * @param number     The house number
+     * @param price      The monthly price
+     * @param size       The size in m2
+     * @param owner      The room owner
+     */
     public Room(String city, String postcode, String streetName, int number, double price, int size, Owner owner) {
         this.city = city;
         this.postcode = postcode;
@@ -24,6 +35,18 @@ public class Room {
         this.owner = owner;
     }
 
+    /**
+     * Constructor for the Room Class wit a renter
+     *
+     * @param city       The city
+     * @param postcode   The postal code
+     * @param streetName The street name
+     * @param number     The house number
+     * @param price      The monthly price
+     * @param size       The size in m2
+     * @param owner      The room owner
+     * @param renter     The current renter
+     */
     public Room(String city, String postcode, String streetName, int number, double price, int size, Owner owner, Renter renter) {
         this.city = city;
         this.postcode = postcode;
@@ -35,6 +58,7 @@ public class Room {
         this.renter = renter;
     }
 
+    //getters
     public String getCity() {
         return city;
     }
@@ -63,19 +87,12 @@ public class Room {
         return owner;
     }
 
-    public void setRenter(Renter renter) {
-        this.renter = renter;
-    }
-
     public Renter getRenter() {
         return renter;
     }
 
-    @Override
-    public String toString() {
-        if (renter == null) {
-            return "Stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername();
-        }
-        return "Stad: " + city + " postcode: " + postcode + " Adres: " + streetName + " " + number + " Grootte: " + size + "m2 " + "Prijs: " + price + " euro Eigenaar: " + owner.getUsername() + " Huurder: " + renter.getUsername();
+    //setters
+    public void setRenter(Renter renter) {
+        this.renter = renter;
     }
 }

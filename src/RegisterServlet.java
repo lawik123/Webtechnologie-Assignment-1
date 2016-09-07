@@ -23,7 +23,9 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Get PrintWriter
         PrintWriter out = response.getWriter();
+
         String username;
         String password;
         String type;
@@ -31,15 +33,18 @@ public class RegisterServlet extends HttpServlet {
 
         ArrayList<User> list = (ArrayList<User>) getServletContext().getAttribute("user_list");
 
-        username = request.getParameter("UserName");
-        password = request.getParameter("PassWord");
-        type = request.getParameter("UserType");
+        username = request.getParameter("UserName"); //Get the UserName parameter
+        password = request.getParameter("PassWord"); //Get the PassWord parameter
+        type = request.getParameter("UserType"); //Get the UserType parameter
 
+
+        //Check if the username doesn't already exist
         for (User u : list) {
             if (u.getUsername().equals(username)) {
                 equals = true;
             }
         }
+        //If the username already exists let the user know and give the option to try again
         if (equals) {
             out.println("<!DOCTYPE html>\n" +
                     "<html lang =\"en\">\n" +
@@ -57,10 +62,14 @@ public class RegisterServlet extends HttpServlet {
                     "</body>");
 
         } else if (type.equals("renter")) {
+            //If the username is valid and the user type is Renter create a new Renter and add it to the user list
             list.add(new Renter(username, password));
+            //Redirect to the login.html page
             response.sendRedirect("/login.html");
         } else if (type.equals("owner")) {
+            //If the username is valid and the user type is Owner create a new Owner and add it to the user list
             list.add(new Owner(username, password));
+            //Redirect to the login.html page
             response.sendRedirect("/login.html");
         }
 
