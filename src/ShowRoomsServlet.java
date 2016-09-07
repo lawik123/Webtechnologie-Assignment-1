@@ -1,4 +1,4 @@
-import Model.Room;
+import Model.Owner;
 import Model.User;
 
 import javax.servlet.ServletException;
@@ -24,22 +24,13 @@ public class ShowRoomsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-
         ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("user_list");
-        ArrayList<Room> rooms = (ArrayList<Room>) getServletContext().getAttribute("room_list");
-        ArrayList<Room> myRooms = new ArrayList<>();
-        User currentUser =null;
+
+        Owner currentUser =null;
         for (User user: users){
             if(user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())){
-                currentUser = user;
+                currentUser = (Owner) user;
             }
-        }
-
-        for(Room room: rooms){
-                if (room.getOwner().getUsername().equals(currentUser.getUsername())) {
-                    myRooms.add(room);
-                }
-
         }
 
         out.println("<!DOCTYPE html>\n" +
@@ -55,8 +46,8 @@ public class ShowRoomsServlet extends HttpServlet {
                 "<body class='center'>\n" +
                 "<h2> Mijn kamers: </h1>\n" +
                 "</br>\n");
-        for (int i = 0; i < myRooms.size(); i++) {
-            out.println(i + 1 + ". " + myRooms.get(i).toString() + "<br>");
+        for (int i = 0; i < currentUser.getMyrooms().size(); i++) {
+            out.println(i + 1 + ". " + currentUser.getMyrooms().get(i).toString() + "<br>");
         }
         out.println("<br>" +
                 "<form action=\"/addroom.html\" method=\"post\">\n" +

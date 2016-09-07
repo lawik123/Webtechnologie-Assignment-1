@@ -1,4 +1,6 @@
+import Model.Owner;
 import Model.Room;
+import Model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -23,19 +26,24 @@ public class SearchRoomServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-
-        ArrayList<Room> rooms = (ArrayList<Room>) getServletContext().getAttribute("room_list");
-
+        User user = null;
+        List<User> list = (List<User>) getServletContext().getAttribute("user_list");
         ArrayList<Room> availableRooms = new ArrayList<Room>();
-        for (Room room : rooms) {
-            if (room.getCity().equals(request.getParameter("Plaats"))
-                    && room.getSize() == Integer.parseInt(request.getParameter("VierkanteMeters"))
-                    && room.getPrice() <= Double.parseDouble(request.getParameter("MaximalePrijs"))
-                    && room.getRenter() == null) {
-                availableRooms.add(room);
-            }
 
+        for (User u : list) {
+            if(u instanceof Owner) {
+                for (Room room : ((Owner) u).getMyrooms()) {
+                    if (room.getCity().equals(request.getParameter("Plaats"))
+                            && room.getSize() == Integer.parseInt(request.getParameter("VierkanteMeters"))
+                            && room.getPrice() <= Double.parseDouble(request.getParameter("MaximalePrijs"))
+                            && room.getRenter() == null) {
+                        availableRooms.add(room);
+                    }
+
+                }
+            }
         }
+
         out.println("<!DOCTYPE html>\n" +
                 "<html lang =\"en\">\n" +
                 "<head\n" +
@@ -50,7 +58,10 @@ public class SearchRoomServlet extends HttpServlet {
                 "<h2> Beschikbare kamers: </h1>\n" +
                 "</br>\n");
         for (int i = 0; i < availableRooms.size(); i++) {
-            out.println(i + 1 + ". " + availableRooms.get(i).toString() + "<br>");
+            out.println(i + 1 + ". " + availableRooms.get(i).toString() + "<br>" + "<br>");
         }
+        out.println("<form action=\"huurder.html\" method=\"get\">\n" +
+                "    <input type=\"submit\" value=\"Opnieuw zoeken\">\n" +
+                "</form>");
     }
 }

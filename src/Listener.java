@@ -16,16 +16,13 @@ public class Listener implements ServletContextListener {
             context.setAttribute("user_list", new ArrayList<User>());
 
             ArrayList<User> list = (ArrayList<User>) context.getAttribute("user_list");
+
+            Owner owner = new Owner("owner", "owner");
             list.add(new Renter("renter","renter"));
-            list.add(new Owner("owner","owner"));
-        }
-        if (context.getAttribute("room_list") == null) {
-            context.setAttribute("room_list", new ArrayList<Room>());
-            ArrayList<Room> rooms = (ArrayList<Room>) context.getAttribute("room_list");
-            ArrayList<User> users = (ArrayList<User>) context.getAttribute("user_list");
-            rooms.add(new Room("Deventer","7421AD","Grove Denlaan",34,100.00,100,(Owner)users.get(1)));
-            rooms.add(new Room("Deventer","3333BM","Aap",22,50.53,100,(Owner)users.get(1)));
-            rooms.add(new Room("Deventer","4444DS","Test",30,25,100,(Owner)users.get(1),(Renter)users.get(0)));
+            list.add(owner);
+            owner.getMyrooms().add(new Room("Deventer","7421AD","Grove Denlaan",34,100.00,100, owner));
+            owner.getMyrooms().add(new Room("Deventer","3333BM","Aap",22,50.53,100,owner));
+            owner.getMyrooms().add(new Room("Deventer","4444DS","Test",30,25,100,owner));
         }
     }
 

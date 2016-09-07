@@ -19,18 +19,17 @@ public class AddRoomServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        rooms = (ArrayList<Room>) getServletContext().getAttribute("room_list");
         users = (ArrayList<User>) getServletContext().getAttribute("user_list");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String currentUsername = session.getAttribute("user").toString();
-        Owner owner = null;
+        ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("user_list");
 
-        for (User u : users) {
-            if (u.getUsername().equals(currentUsername)) {
-                owner = (Owner) u;
+        Owner currentUser =null;
+        for (User user: users){
+            if(user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())){
+                currentUser = (Owner) user;
             }
         }
 
@@ -41,7 +40,7 @@ public class AddRoomServlet extends HttpServlet {
         double price = Double.parseDouble(request.getParameter("MaximalePrijs"));
         int squareMeters = Integer.parseInt(request.getParameter("VierkanteMeters"));
 
-        rooms.add(new Room(location, postalcode, street, number, price, squareMeters, owner));
+        currentUser.getMyrooms().add(new Room(location, postalcode, street, number, price, squareMeters, currentUser));
 
         response.sendRedirect("showrooms");
     }
