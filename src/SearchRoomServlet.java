@@ -41,7 +41,12 @@ public class SearchRoomServlet extends HttpServlet {
                 "<head\n" +
                 "<meta charset = \"UTF-8\">\n" +
                 "<title> Zoekresultaten</title>\n" +
-                "<body>\n" +
+                "<style> .center {\n"+
+                "text-align:center;\n"+
+                "}\n"+
+                "</style>\n"+
+                "</head>\n"+
+                "<body class= 'center'>\n" +
                 "<h2> Beschikbare kamers: </h1>\n" +
                 "</br>\n");
         for (int i = 0; i < availableRooms.size(); i++) {

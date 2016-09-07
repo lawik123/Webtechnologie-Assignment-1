@@ -46,7 +46,12 @@ public class RegisterServlet extends HttpServlet {
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
                     "<title> Registration failed</title>\n" +
-                    "<body>\n" +
+                    "<style> .center {\n"+
+                    "text-align:center;\n"+
+                    "}\n"+
+                    "</style>\n"+
+                    "</head>\n"+
+                    "<body class ='center'>\n" +
                     "<h2>username already exists</h2>\n" +
                     "<a href=registreer.html>Try again</a>\n" +
                     "</body>");
