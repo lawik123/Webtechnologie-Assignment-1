@@ -28,11 +28,11 @@ public class SecretServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         //check if the user came here from the /showrooms page.
-        String n = request.getParameter("key");
-        String m = session.getAttribute("key").toString();
-        int k = Integer.parseInt(n);
-        int l = Integer.parseInt(m);
-        if(k==l){
+        String secretParamString = request.getParameter("key");
+        String secretAttributeString = session.getAttribute("key").toString();
+        int secretParamInt = Integer.parseInt(secretParamString);
+        int secretAttributeInt = Integer.parseInt(secretAttributeString);
+        if(secretParamInt==secretAttributeInt){
             //if the user came here from the /showrooms page forward to the /WEB-INF/addroom.html page
             session.removeAttribute("key");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/addroom.html");
@@ -52,7 +52,7 @@ public class SecretServlet extends HttpServlet {
                     "</style>\n"+
                     "</head>\n"+
                     "<body class ='center'>\n" +
-                    "<h3> deze pagina kan niet worden weergegeven</h3>\n" +
+                    "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
                     "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
                     "\n" +
                     "<script>\n" +
@@ -82,7 +82,7 @@ public class SecretServlet extends HttpServlet {
                         "</style>\n"+
                         "</head>\n"+
                         "<body class ='center'>\n" +
-                        "<h3> deze pagina kan niet worden weergegeven</h3>\n" +
+                        "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
                         "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
                         "\n" +
                         "<script>\n" +
