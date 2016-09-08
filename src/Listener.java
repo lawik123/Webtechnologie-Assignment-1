@@ -21,11 +21,11 @@ public class Listener implements ServletContextListener {
 
             //Add dummy data to the user list
             Owner owner = new Owner("owner", "owner");
-            list.add(new Renter("renter","renter"));
+            list.add(new Renter("renter", "renter"));
             list.add(owner);
-            owner.getMyrooms().add(new Room("Deventer","7421AD","Grove Denlaan",34,100.00,100, owner));
-            owner.getMyrooms().add(new Room("Deventer","3333BM","Aap",22,50.53,100,owner));
-            owner.getMyrooms().add(new Room("Deventer","4444DS","Test",30,25,100,owner));
+            owner.getMyrooms().add(new Room("Deventer", "7421AD", "Grove Denlaan", 34, 100.00, 100, owner));
+            owner.getMyrooms().add(new Room("Deventer", "3333BM", "Aap", 22, 50.53, 100, owner));
+            owner.getMyrooms().add(new Room("Deventer", "4444DS", "Test", 30, 25, 100, owner));
         }
     }
 

@@ -25,7 +25,7 @@ public class SecretRenterServlet extends HttpServlet {
         String secretAttributeString = session.getAttribute("renterkey").toString();
         int secretParamInt = Integer.parseInt(secretParamString);
         int secretAttributeInt = Integer.parseInt(secretAttributeString);
-        if(secretParamInt==secretAttributeInt){
+        if (secretParamInt == secretAttributeInt) {
             //if the user came here from the /searchroom page forward to the /WEB-INF/huurder.html page
             session.removeAttribute("renterkey");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");
@@ -33,17 +33,17 @@ public class SecretRenterServlet extends HttpServlet {
         }
 
         //if the user did not get here from the /searchroom page, let the user know and give the option to go to the previous page
-        else{
+        else {
             out.println("<!DOCTYPE html>\n" +
                     "<html lang =\"en\">\n" +
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
                     "<title> Pagina niet beschikbaar </title>\n" +
-                    "<style> .center {\n"+
-                    "text-align:center;\n"+
-                    "}\n"+
-                    "</style>\n"+
-                    "</head>\n"+
+                    "<style> .center {\n" +
+                    "text-align:center;\n" +
+                    "}\n" +
+                    "</style>\n" +
+                    "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
                     "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
@@ -52,7 +52,7 @@ public class SecretRenterServlet extends HttpServlet {
                     "function goBack() {\n" +
                     "    window.history.back();\n" +
                     "}\n" +
-                    "</script>"+
+                    "</script>" +
                     "</body>");
 
         }
@@ -60,19 +60,20 @@ public class SecretRenterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Get the PrintWriter
         PrintWriter out = response.getWriter();
 
-        //if the user did not get here from the /searchroom page, let the user know and give the option to go to the previous page
+        //If the user did not get here from the /searchroom page, let the user know and give the option to go to the previous page
         out.println("<!DOCTYPE html>\n" +
                 "<html lang =\"en\">\n" +
                 "<head\n" +
                 "<meta charset = \"UTF-8\">\n" +
                 "<title> Pagina niet beschikbaar </title>\n" +
-                "<style> .center {\n"+
-                "text-align:center;\n"+
-                "}\n"+
-                "</style>\n"+
-                "</head>\n"+
+                "<style> .center {\n" +
+                "text-align:center;\n" +
+                "}\n" +
+                "</style>\n" +
+                "</head>\n" +
                 "<body class ='center'>\n" +
                 "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
                 "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
@@ -81,7 +82,7 @@ public class SecretRenterServlet extends HttpServlet {
                 "function goBack() {\n" +
                 "    window.history.back();\n" +
                 "}\n" +
-                "</script>"+
+                "</script>" +
                 "</body>");
     }
 

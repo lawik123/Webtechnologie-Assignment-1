@@ -51,11 +51,11 @@ public class RegisterServlet extends HttpServlet {
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
                     "<title> Registratie mislukt</title>\n" +
-                    "<style> .center {\n"+
-                    "text-align:center;\n"+
-                    "}\n"+
-                    "</style>\n"+
-                    "</head>\n"+
+                    "<style> .center {\n" +
+                    "text-align:center;\n" +
+                    "}\n" +
+                    "</style>\n" +
+                    "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h2>Gebruikersnaam is al in gebruik</h2>\n" +
                     "<a href=registreer.html>Probeer opnieuw</a>\n" +

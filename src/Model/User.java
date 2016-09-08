@@ -9,6 +9,7 @@ public class User {
 
     /**
      * Constructor for the User Class
+     *
      * @param username The username
      * @param password The password
      */

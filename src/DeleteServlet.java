@@ -20,11 +20,11 @@ public class DeleteServlet extends HttpServlet {
         //Get the user list from the ServletContext
         ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("user_list");
 
-        Owner currentUser =null;
+        Owner currentUser = null;
 
         //Find the current user
-        for (User user: users){
-            if(user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())){
+        for (User user : users) {
+            if (user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())) {
                 currentUser = (Owner) user;
             }
         }
@@ -32,7 +32,7 @@ public class DeleteServlet extends HttpServlet {
         int listNumber = 0;
         try {
             //Retrieve the ArrayList position of the room from the parameter
-            listNumber = Integer.parseInt(request.getParameter("KamerGetal"))-1;
+            listNumber = Integer.parseInt(request.getParameter("KamerGetal")) - 1;
         } catch (NumberFormatException nfe) {
         }
 

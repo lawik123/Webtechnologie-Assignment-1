@@ -28,11 +28,11 @@ public class AddRoomServlet extends HttpServlet {
         HttpSession session = request.getSession();
 //        ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("user_list");
 
-        Owner currentUser =null;
+        Owner currentUser = null;
 
         //Find the current user
-        for (User user: users){
-            if(user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())){
+        for (User user : users) {
+            if (user.getUsername().equalsIgnoreCase(session.getAttribute("user").toString())) {
                 currentUser = (Owner) user;
             }
         }

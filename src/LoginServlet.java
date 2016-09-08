@@ -18,7 +18,7 @@ import java.util.Random;
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //get the current Session
@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 
         //Find the current user
         for (User u : list) {
-            if(u.getUsername().equals(request.getParameter("UserName"))) {
+            if (u.getUsername().equals(request.getParameter("UserName"))) {
                 user = u;
             }
         }
@@ -43,10 +43,10 @@ public class LoginServlet extends HttpServlet {
             if (user instanceof Renter) {
                 Random random = new Random();
                 int ra = random.nextInt();
-                session.setAttribute("random",Integer.toString(ra));
+                session.setAttribute("random", Integer.toString(ra));
                 //If the user is a renter forward the user to the /WEB-INF/huurder.html page
-                RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");
-                dispatcher.forward(request,response);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");
+                dispatcher.forward(request, response);
             } else if (user instanceof Owner) {
                 //If the user is an owner redirect the user to the showrooms page
                 response.sendRedirect("showrooms");

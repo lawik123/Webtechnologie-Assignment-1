@@ -11,6 +11,7 @@ public class Owner extends User {
 
     /**
      * Constructor for the Owner Class
+     *
      * @param username The username
      * @param password The password
      */

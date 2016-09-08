@@ -37,11 +37,11 @@ public class ShowPersonsServlet extends HttpServlet {
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
                     "<title> Beheer </title>\n" +
-                    "<style> .center {\n"+
-                    "text-align:center;\n"+
-                    "}\n"+
-                    "</style>\n"+
-                    "</head>\n"+
+                    "<style> .center {\n" +
+                    "text-align:center;\n" +
+                    "}\n" +
+                    "</style>\n" +
+                    "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h3> U bent niet ingelogd</h3>\n" +
                     "<a href='/login.html'>Login</a>\n" +
@@ -91,9 +91,9 @@ public class ShowPersonsServlet extends HttpServlet {
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
                     "<title> Beheer </title>\n" +
-                    "<style> .center {\n"+
-                    "text-align:center;\n"+
-                    "}\n"+
+                    "<style> .center {\n" +
+                    "text-align:center;\n" +
+                    "}\n" +
                     "table{\n" +
                     "font-family: arial, sans-serif;\n" +
                     "border-collapse: collapse;\n" +
@@ -107,8 +107,8 @@ public class ShowPersonsServlet extends HttpServlet {
                     "tr:nth-child(even) {\n" +
                     "background-color: #dddddd;\n" +
                     "}\n" +
-                    "</style>\n"+
-                    "</head>\n"+
+                    "</style>\n" +
+                    "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h4> Laatste bezoek:\n");
             if (lastVisit != null) {
@@ -125,28 +125,20 @@ public class ShowPersonsServlet extends HttpServlet {
                     "<tr>\n" +
                     "<th>Naam</th>" +
                     "<th>Type</th>\n");
-            for(User user: users){
-               out.println("<tr>\n"+
-                        "<td>" + user.getUsername()+"</td>\n");
-                        if(user instanceof Owner){
-                            out.println("<td>" + "Owner" + "</td>\n");
-                        }else if(user instanceof Renter){
-                            out.println("<td>" + "Renter" + "</td>\n");
-                        }
+            for (User user : users) {
+                out.println("<tr>\n" +
+                        "<td>" + user.getUsername() + "</td>\n");
+                if (user instanceof Owner) {
+                    out.println("<td>" + "Owner" + "</td>\n");
+                } else if (user instanceof Renter) {
+                    out.println("<td>" + "Renter" + "</td>\n");
+                }
                 out.println("</tr>\n");
 
             }
             out.println(
-                    "</table>\n");
-//            for (int i = 0; i < owners.size(); i++) {
-//                out.println(i + 1 + ". " + owners.get(i).toString() + "<br>");
-//            }
-//            out.println("<br>\n" +
-//                    "<h4> Huurders:</h4> \n ");
-//            for (int i = 0; i < renters.size(); i++) {
-//                out.println(i + 1 + ". " + renters.get(i).toString() + "<br>");
-//            }
-            out.println("</body>");
+                    "</table>\n" + "" +
+                            "</body>");
 
             //create a new lastVisitCookie containing the date and time this page was visited
             Cookie lastVisitCookie = new Cookie("lastVisitCookie", date.toString());

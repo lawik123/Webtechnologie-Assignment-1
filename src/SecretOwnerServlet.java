@@ -32,7 +32,7 @@ public class SecretOwnerServlet extends HttpServlet {
         String secretAttributeString = session.getAttribute("ownerkey").toString();
         int secretParamInt = Integer.parseInt(secretParamString);
         int secretAttributeInt = Integer.parseInt(secretAttributeString);
-        if(secretParamInt==secretAttributeInt){
+        if (secretParamInt == secretAttributeInt) {
             //if the user came here from the /showrooms page forward to the /WEB-INF/addroom.html page
             session.removeAttribute("ownerkey");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/addroom.html");
@@ -40,17 +40,17 @@ public class SecretOwnerServlet extends HttpServlet {
         }
 
         //if the user did not get here from the /showrooms page, let the user know and give the option to go to the previous page
-        else{
+        else {
             out.println("<!DOCTYPE html>\n" +
                     "<html lang =\"en\">\n" +
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
                     "<title> Pagina niet beschikbaar </title>\n" +
-                    "<style> .center {\n"+
-                    "text-align:center;\n"+
-                    "}\n"+
-                    "</style>\n"+
-                    "</head>\n"+
+                    "<style> .center {\n" +
+                    "text-align:center;\n" +
+                    "}\n" +
+                    "</style>\n" +
+                    "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
                     "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
@@ -59,7 +59,7 @@ public class SecretOwnerServlet extends HttpServlet {
                     "function goBack() {\n" +
                     "    window.history.back();\n" +
                     "}\n" +
-                    "</script>"+
+                    "</script>" +
                     "</body>");
 
         }
@@ -72,24 +72,24 @@ public class SecretOwnerServlet extends HttpServlet {
 
         //if the user did not get here from the /showrooms page, let the user know and give the option to go to the previous page
         out.println("<!DOCTYPE html>\n" +
-                        "<html lang =\"en\">\n" +
-                        "<head\n" +
-                        "<meta charset = \"UTF-8\">\n" +
-                        "<title> Pagina niet beschikbaar </title>\n" +
-                        "<style> .center {\n"+
-                        "text-align:center;\n"+
-                        "}\n"+
-                        "</style>\n"+
-                        "</head>\n"+
-                        "<body class ='center'>\n" +
-                        "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
-                        "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
-                        "\n" +
-                        "<script>\n" +
-                        "function goBack() {\n" +
-                        "    window.history.back();\n" +
-                        "}\n" +
-                        "</script>"+
-                        "</body>");
+                "<html lang =\"en\">\n" +
+                "<head\n" +
+                "<meta charset = \"UTF-8\">\n" +
+                "<title> Pagina niet beschikbaar </title>\n" +
+                "<style> .center {\n" +
+                "text-align:center;\n" +
+                "}\n" +
+                "</style>\n" +
+                "</head>\n" +
+                "<body class ='center'>\n" +
+                "<h3> Deze pagina kan niet worden weergegeven</h3>\n" +
+                "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
+                "\n" +
+                "<script>\n" +
+                "function goBack() {\n" +
+                "    window.history.back();\n" +
+                "}\n" +
+                "</script>" +
+                "</body>");
     }
 }

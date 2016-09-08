@@ -66,11 +66,11 @@ public class ShowRoomsServlet extends HttpServlet {
                         "<head\n" +
                         "<meta charset = \"UTF-8\">\n" +
                         "<title> Pagina niet beschikbaar </title>\n" +
-                        "<style> .center {\n"+
-                        "text-align:center;\n"+
-                        "}\n"+
-                        "</style>\n"+
-                        "</head>\n"+
+                        "<style> .center {\n" +
+                        "text-align:center;\n" +
+                        "}\n" +
+                        "</style>\n" +
+                        "</head>\n" +
                         "<body class ='center'>\n" +
                         "<h3> Deze pagina is alleen beschikbaar voor verhuurders</h3>\n" +
                         "<button onclick=\"goBack()\">Vorige pagina</button>\n" +
@@ -79,7 +79,7 @@ public class ShowRoomsServlet extends HttpServlet {
                         "function goBack() {\n" +
                         "    window.history.back();\n" +
                         "}\n" +
-                        "</script>"+
+                        "</script>" +
                         "</body>");
             }
         }

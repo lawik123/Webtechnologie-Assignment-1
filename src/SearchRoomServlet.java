@@ -159,8 +159,8 @@ public class SearchRoomServlet extends HttpServlet {
                         "<td>" + availableRooms.get(i).getOwner() + "</td>\n" +
                         "</tr>");
             }
-            out.println("</table>\n");
-            out.println("<form action=\"searchagain\" method=\"post\">\n" +
+            out.println("</table>\n" +
+                    "<form action=\"searchagain\" method=\"post\">\n" +
                     "    <input type=\"submit\" value=\"Opnieuw zoeken\">\n" +
                     "    <input type=\"hidden\" name=\"renterkey\" value=\"" + Integer.toString(secretKey) + "\">\n" +
                     "</form>");
