@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Lawik Ayoub on 08-Sep-16.
  */
 @WebServlet("/roomadder")
-public class SecretServlet extends HttpServlet {
+public class SecretOwnerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Get PrintWriter
         PrintWriter out = response.getWriter();
@@ -28,13 +28,13 @@ public class SecretServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         //check if the user came here from the /showrooms page.
-        String secretParamString = request.getParameter("key");
-        String secretAttributeString = session.getAttribute("key").toString();
+        String secretParamString = request.getParameter("ownerkey");
+        String secretAttributeString = session.getAttribute("ownerkey").toString();
         int secretParamInt = Integer.parseInt(secretParamString);
         int secretAttributeInt = Integer.parseInt(secretAttributeString);
         if(secretParamInt==secretAttributeInt){
             //if the user came here from the /showrooms page forward to the /WEB-INF/addroom.html page
-            session.removeAttribute("key");
+            session.removeAttribute("ownerkey");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/addroom.html");
             dispatcher.forward(request, response);
         }

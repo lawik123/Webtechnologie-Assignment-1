@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 
         //Check if the username doesn't already exist
         for (User u : list) {
-            if (u.getUsername().equals(username)) {
+            if (u.getUsername().equalsIgnoreCase(username)) {
                 equals = true;
             }
         }
@@ -50,15 +50,15 @@ public class RegisterServlet extends HttpServlet {
                     "<html lang =\"en\">\n" +
                     "<head\n" +
                     "<meta charset = \"UTF-8\">\n" +
-                    "<title> Registration failed</title>\n" +
+                    "<title> Registratie mislukt</title>\n" +
                     "<style> .center {\n"+
                     "text-align:center;\n"+
                     "}\n"+
                     "</style>\n"+
                     "</head>\n"+
                     "<body class ='center'>\n" +
-                    "<h2>username already exists</h2>\n" +
-                    "<a href=registreer.html>Try again</a>\n" +
+                    "<h2>Gebruikersnaam is al in gebruik</h2>\n" +
+                    "<a href=registreer.html>Probeer opnieuw</a>\n" +
                     "</body>");
 
         } else if (type.equals("renter")) {

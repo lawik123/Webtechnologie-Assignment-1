@@ -86,10 +86,10 @@ public class ShowRoomsServlet extends HttpServlet {
         //if currentUser is not null(which means the current user is an Owner) display the page
         if (currentUser != null) {
 
-            //generate unique key for the SecretServlet
+            //generate unique key for the SecretOwnerServlet
             Random random = new Random();
             int secretKey = random.nextInt();
-            session.setAttribute("key", Integer.toString(secretKey));
+            session.setAttribute("ownerkey", Integer.toString(secretKey));
 
             //Display the current user's rooms
             out.println("<!DOCTYPE html>\n" +
@@ -152,7 +152,7 @@ public class ShowRoomsServlet extends HttpServlet {
                             "<form action=\"roomadder\" method=\"post\">\n" +
                             "    <label>\n" +
                             "    <input type=\"submit\" value=\"Kamer toevoegen\">\n" +
-                            "    <input type=\"hidden\" name=\"key\" value=\"" + Integer.toString(secretKey) + "\">\n" +
+                            "    <input type=\"hidden\" name=\"ownerkey\" value=\"" + Integer.toString(secretKey) + "\">\n" +
                             "    </label>\n" +
                             "</form>\n" +
                             "<br>\n" +
