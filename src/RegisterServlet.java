@@ -17,11 +17,6 @@ import java.util.ArrayList;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Get PrintWriter
         PrintWriter out = response.getWriter();
@@ -65,12 +60,12 @@ public class RegisterServlet extends HttpServlet {
             //If the username is valid and the user type is Renter create a new Renter and add it to the user list
             list.add(new Renter(username, password));
             //Redirect to the login.html page
-            response.sendRedirect("/login.html");
+            response.sendRedirect("login.html");
         } else if (type.equals("owner")) {
             //If the username is valid and the user type is Owner create a new Owner and add it to the user list
             list.add(new Owner(username, password));
             //Redirect to the login.html page
-            response.sendRedirect("/login.html");
+            response.sendRedirect("login.html");
         }
 
 

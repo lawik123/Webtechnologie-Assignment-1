@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 
         } else {
             //If the user does not exists or if the password is incorrect redirect to the fouteinlog.html page
-            response.sendRedirect("/fouteinlog.html");
+            response.sendRedirect("fouteinlog.html");
         }
 
     }

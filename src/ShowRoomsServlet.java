@@ -44,7 +44,7 @@ public class ShowRoomsServlet extends HttpServlet {
                     "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h3> U bent niet ingelogd</h3>\n" +
-                    "<a href='/login.html'>Login</a>\n" +
+                    "<a href='login.html'>Login</a>\n" +
                     "</body>"
             );
         }
@@ -158,7 +158,8 @@ public class ShowRoomsServlet extends HttpServlet {
                             "<br>\n" +
                             "<form action=\"delete\" method=\"post\">\n" +
                             "<label>\n" +
-                            "Voer kamer nummer in: <input type=\"number\" name=\"KamerGetal\" value=\"\" min=\"1\">" +
+                            "Voer kamer nummer in: <input type=\"number\" name=\"KamerGetal\" value=\"\" min=\"1\" max=\""
+                            + currentUser.getMyrooms().size()+"\">\n"+
                             "<input type=\"submit\" value=\"Verwijder\">\n" +
                             "</label>" +
                             "</form>" +

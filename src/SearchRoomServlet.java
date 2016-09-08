@@ -47,7 +47,7 @@ public class SearchRoomServlet extends HttpServlet {
                     "</head>\n" +
                     "<body class ='center'>\n" +
                     "<h3> U bent niet ingelogd</h3>\n" +
-                    "<a href='/login.html'>Login</a>\n" +
+                    "<a href='login.html'>Login</a>\n" +
                     "</body>"
             );
         }
