@@ -101,5 +101,8 @@ public class SearchRoomServlet extends HttpServlet {
         out.println("<form action=\"huurder.html\" method=\"get\">\n" +
                 "    <input type=\"submit\" value=\"Opnieuw zoeken\">\n" +
                 "</form>");
+
+
     }
+
 }

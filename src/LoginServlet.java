@@ -2,6 +2,7 @@ import Model.Owner;
 import Model.Renter;
 import Model.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Lars Meulenbroek on 29-Aug-16.
@@ -39,8 +41,12 @@ public class LoginServlet extends HttpServlet {
             //If the user exists and the password is correct, add the user to the current Session
             session.setAttribute("user", user.getUsername());
             if (user instanceof Renter) {
-                //If the user is a renter redirect the user to the huurder.html page
-                response.sendRedirect("/huurder.html");
+                Random random = new Random();
+                int ra = random.nextInt();
+                session.setAttribute("random",Integer.toString(ra));
+                //If the user is a renter forward the user to the /WEB-INF/huurder.html page
+                RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");
+                dispatcher.forward(request,response);
             } else if (user instanceof Owner) {
                 //If the user is an owner redirect the user to the showrooms page
                 response.sendRedirect("showrooms");

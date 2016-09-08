@@ -73,6 +73,7 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/login.html");
         }
 
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +19,14 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         //Invalidate the session
-        session.invalidate();
-
+        session.setAttribute("user","1111");
+//        session.removeAttribute("user");
+//        session.invalidate();
         //Redirect to the login.html page
-        response.sendRedirect("login.html");
+//        response.sendRedirect("login.html");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.html");
+        dispatcher.forward(request,response);
+
+
     }
 }

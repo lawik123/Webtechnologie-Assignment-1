@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Lawik Ayoub on 03-Sep-16.
@@ -39,6 +40,10 @@ public class ShowRoomsServlet extends HttpServlet {
                 currentUser = (Owner) user;
             }
         }
+
+        Random random = new Random();
+        int n= random.nextInt();
+        session.setAttribute("key",Integer.toString(n));
 
         //Display the current user's rooms
         out.println("<!DOCTYPE html>\n" +
@@ -98,9 +103,10 @@ public class ShowRoomsServlet extends HttpServlet {
         out.println(
                 "</table>\n" +
                         "<br>" +
-                        "<form action=\"/addroom.html\" method=\"post\">\n" +
+                        "<form action=\"roomadder\" method=\"post\">\n" +
                         "    <label>\n" +
                         "    <input type=\"submit\" value=\"Kamer toevoegen\">\n" +
+                        "    <input type=\"hidden\" name=\"key\" value=\""+Integer.toString(n)+"\">\n"+
                         "    </label>\n" +
                         "</form>\n" +
                         "<br>\n" +
@@ -120,4 +126,5 @@ public class ShowRoomsServlet extends HttpServlet {
                         "</form>\n" +
                         "</body>");
     }
+
 }

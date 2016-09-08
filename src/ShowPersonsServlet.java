@@ -94,28 +94,58 @@ public class ShowPersonsServlet extends HttpServlet {
                     "<style> .center {\n"+
                     "text-align:center;\n"+
                     "}\n"+
+                    "table{\n" +
+                    "font-family: arial, sans-serif;\n" +
+                    "border-collapse: collapse;\n" +
+                    "width: 100%;\n" +
+                    "}" +
+                    "td,th {\n" +
+                    "border: 1px solid #dddddd;\n" +
+                    "text-align: left;\n" +
+                    "padding: 8px;\n" +
+                    "}\n" +
+                    "tr:nth-child(even) {\n" +
+                    "background-color: #dddddd;\n" +
+                    "}\n" +
                     "</style>\n"+
                     "</head>\n"+
                     "<body class ='center'>\n" +
-                    "<h3> Laatste bezoek:\n");
+                    "<h4> Laatste bezoek:\n");
             if (lastVisit != null) {
-                out.println(lastVisit + "</h3>");
+                out.println(lastVisit + "</h4>");
             }
             out.println(
-                    "<h3> Aantal keren bezocht: \n ");
+                    "<h4> Aantal keren bezocht: \n ");
             if (numberVisit != null) {
-                out.println(numberVisit + "</h3>");
+                out.println(numberVisit + "</h4>");
             }
             out.println(
-                    "<h4> Verhuurders: </h4>\n");
-            for (int i = 0; i < owners.size(); i++) {
-                out.println(i + 1 + ". " + owners.get(i).toString() + "<br>");
+                    "<h2> Gebruikers </h2>\n");
+            out.println("<table>\n" +
+                    "<tr>\n" +
+                    "<th>Naam</th>" +
+                    "<th>Type</th>\n");
+            for(User user: users){
+               out.println("<tr>\n"+
+                        "<td>" + user.getUsername()+"</td>\n");
+                        if(user instanceof Owner){
+                            out.println("<td>" + "Owner" + "</td>\n");
+                        }else if(user instanceof Renter){
+                            out.println("<td>" + "Renter" + "</td>\n");
+                        }
+                out.println("</tr>\n");
+
             }
-            out.println("<br>\n" +
-                    "<h4> Huurders:</h4> \n ");
-            for (int i = 0; i < renters.size(); i++) {
-                out.println(i + 1 + ". " + renters.get(i).toString() + "<br>");
-            }
+            out.println(
+                    "</table>\n");
+//            for (int i = 0; i < owners.size(); i++) {
+//                out.println(i + 1 + ". " + owners.get(i).toString() + "<br>");
+//            }
+//            out.println("<br>\n" +
+//                    "<h4> Huurders:</h4> \n ");
+//            for (int i = 0; i < renters.size(); i++) {
+//                out.println(i + 1 + ". " + renters.get(i).toString() + "<br>");
+//            }
             out.println("</body>");
 
             //create a new lastVisitCookie containing the date and time this page was visited
@@ -138,6 +168,7 @@ public class ShowPersonsServlet extends HttpServlet {
 
 
         }
+
 
     }
 }
