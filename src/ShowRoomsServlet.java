@@ -159,7 +159,7 @@ public class ShowRoomsServlet extends HttpServlet {
                             "<form action=\"delete\" method=\"post\">\n" +
                             "<label>\n" +
                             "Voer kamer nummer in: <input type=\"number\" name=\"KamerGetal\" value=\"\" min=\"1\">" +
-                            "<input type=\"submit\" value=\"Delete\">\n" +
+                            "<input type=\"submit\" value=\"Verwijder\">\n" +
                             "</label>" +
                             "</form>" +
                             "<br>\n" +
@@ -168,7 +168,7 @@ public class ShowRoomsServlet extends HttpServlet {
                             "</form>\n" +
                             "<br>\n" +
                             "<form action=\"logout\" method=\"get\">\n" +
-                            "<input type=\"submit\" value=\"logout\">\n" +
+                            "<input type=\"submit\" value=\"log uit\">\n" +
                             "</form>\n" +
                             "</body>");
         }
